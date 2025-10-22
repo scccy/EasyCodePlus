@@ -46,7 +46,7 @@ dependencies {
     testImplementation(libs.opentest4j)
 
     // Jackson 数据绑定库
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.9.6")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
 
     // Lombok 库，仅在编译时需要
     compileOnly("org.projectlombok:lombok:1.18.2")
