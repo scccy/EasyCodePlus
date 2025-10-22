@@ -45,10 +45,23 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.opentest4j)
 
+    // Jackson 数据绑定库
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.9.6")
+
+    // Lombok 库，仅在编译时需要
+    compileOnly("org.projectlombok:lombok:1.18.2")
+    annotationProcessor("org.projectlombok:lombok:1.18.2")
+
+    // 测试时使用 Lombok 的注解处理器
+    testCompileOnly("org.projectlombok:lombok:1.18.2")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.2")
+
+
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
 //        create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
-        local("/Users/shici/Applications/IntelliJ IDEA Ultimate.app")
+//        local("/Users/shici/Applications/IntelliJ IDEA Ultimate.app")
+        local("/Users/shici/Applications/IntelliJ IDEA Ultimate 2024.3.7.app")
         // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
         bundledPlugins(providers.gradleProperty("platformBundledPlugins").map { it.split(',') })
 
@@ -59,6 +72,10 @@ dependencies {
         bundledModules(providers.gradleProperty("platformBundledModules").map { it.split(',') })
 
         testFramework(TestFrameworkType.Platform)
+
+        // 添加插件依赖
+        bundledPlugin("com.intellij.java")
+        bundledPlugin("com.intellij.database")
     }
 }
 
